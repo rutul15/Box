@@ -2,7 +2,6 @@ package com.davidoladeji.box.controller;
 
 
 import com.davidoladeji.box.model.Account;
-import com.davidoladeji.box.model.Customer;
 import com.davidoladeji.box.model.Product;
 import com.davidoladeji.box.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,7 +87,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.GET)
-      public ModelAndView registerPage(ModelAndView model, @ModelAttribute("customer")Customer customer) {
+      public ModelAndView registerPage(ModelAndView model, @ModelAttribute("account")Account account) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 
@@ -97,7 +96,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ModelAndView registerPost(ModelAndView model, @Valid @ModelAttribute("customer")Customer customer, BindingResult result) {
+    public ModelAndView registerPost(ModelAndView model, @Valid @ModelAttribute("account")Account account, BindingResult result) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 
@@ -107,7 +106,7 @@ public class HomeController {
 
         }else{
 
-            customerRepository.save(customer);
+            accountRepository.save(account);
             model.setViewName("index");
             return model;
         }

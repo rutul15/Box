@@ -15,6 +15,10 @@ public class Account {
     @Column(name = "id")
     private Long id;
 
+
+    @Basic
+    @Column(name = "staffid")
+    private Long staffid;
     
     @Column(name = "role_id")
     private int roleId;
@@ -51,6 +55,24 @@ public class Account {
     @Column(name = "mobile")
     private String mobile;
 
+
+    @Column(name = "postcode")
+    private String postcode;
+
+    @Column(name = "addresslineone")
+    private String addresslineone;
+
+    @Column(name = "addresslinetwo")
+    private String addresslinetwo;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
+
+
+
     @Column (name = "enabled")
     private boolean enabled;
 
@@ -64,6 +86,16 @@ public class Account {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+
+    public Long getStaffid() {
+        return staffid;
+    }
+
+    public void setStaffid(Long staffid) {
+        this.staffid = staffid;
     }
 
 
@@ -145,6 +177,45 @@ public class Account {
         this.mobile = mobile;
     }
 
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getAddresslineone() {
+        return addresslineone;
+    }
+
+    public void setAddresslineone(String addresslineone) {
+        this.addresslineone = addresslineone;
+    }
+
+    public String getAddresslinetwo() {
+        return addresslinetwo;
+    }
+
+    public void setAddresslinetwo(String addresslinetwo) {
+        this.addresslinetwo = addresslinetwo;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
 
     public boolean isEnabled() {

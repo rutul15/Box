@@ -12,7 +12,7 @@
         <h1 class="heading1"><span class="maintext">Register Account</span><span class="subtext">Register Your details with us</span>
         </h1>
 
-        <form:form commandName="customer" action="/register" method="post" class="form-horizontal">
+        <form:form commandName="account" action="/register" method="post" class="form-horizontal">
             <form:errors path="*" cssClass="error"/>
             <h3 class="heading3">Your Personal Details</h3>
 
@@ -20,47 +20,47 @@
                 <fieldset>
                     <div class="control-group">
 
-                        <form:hidden path="account.roleId" value="2"/>
-                        <form:hidden path="account.enabled" value="1"/>
-                        <form:label path="account.firstname" class="control-label"><span class="red">*</span> First Name:</form:label>
+                        <form:hidden path="roleId" value="2"/>
+                        <form:hidden path="enabled" value="1"/>
+                        <form:label path="firstname" class="control-label"><span class="red">*</span> First Name:</form:label>
 
                         <div class="controls" >
-                            <form:input path="account.firstname" type="text" class="input-xlarge"></form:input>
+                            <form:input path="firstname" type="text" class="input-xlarge"></form:input>
                         </div>
                     </div>
                     <div class="control-group">
-                        <form:label path="account.surname" class="control-label"><span class="red">*</span> Last Name:</form:label>
+                        <form:label path="surname" class="control-label"><span class="red">*</span> Last Name:</form:label>
 
                         <div class="controls">
-                            <form:input path="account.surname" type="text" class="input-xlarge"/>
+                            <form:input path="surname" type="text" class="input-xlarge"/>
                         </div>
                     </div>
                     <div class="control-group">
-                        <form:label path="account.email" class="control-label"><span class="red">*</span> Email:</form:label>
+                        <form:label path="email" class="control-label"><span class="red">*</span> Email:</form:label>
 
                         <div class="controls">
-                            <form:input path="account.email" type="text" class="input-xlarge"/>
+                            <form:input path="email" type="text" class="input-xlarge"/>
                         </div>
                     </div>
                     <div class="control-group">
-                        <form:label path="account.mobile" class="control-label"><span class="red">*</span> Mobile:</form:label>
+                        <form:label path="mobile" class="control-label"><span class="red">*</span> Mobile:</form:label>
 
                         <div class="controls">
-                            <form:input  path="account.mobile" type="text" class="input-xlarge"/>
+                            <form:input  path="mobile" type="text" class="input-xlarge"/>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <form:label path="account.gender" class="control-label"><span class="red">*</span> Gender:</form:label>
+                        <form:label path="gender" class="control-label"><span class="red">*</span> Gender:</form:label>
 
                         <div class="inline controls">
 
-                            <form:radiobutton label="Male" name = "gender" path="account.gender" value="1" class="input-xlarge"/>
-                            <form:radiobutton label="Female" name = "gender" path="account.gender" value="2" class="input-xlarge"/>
+                            <form:radiobutton label="Male" name = "gender" path="gender" value="1" class="input-xlarge"/>
+                            <form:radiobutton label="Female" name = "gender" path="gender" value="2" class="input-xlarge"/>
                         </div>
                     </div>
                     <div class="control-group">
-                        <form:label path="account.dob" class="control-label"><span class="red">*</span> Date of Birth:</form:label>
+                        <form:label path="dob" class="control-label"><span class="red">*</span> Date of Birth:</form:label>
 
                         <div class="controls">
                             <fmt:formatDate value="${account.dob}" var="dob"
@@ -126,17 +126,17 @@
                 <fieldset>
                     <div class="control-group">
 
-                        <form:label path="account.username" class="control-label"><span class="red">*</span> Username:</form:label>
+                        <form:label path="username" class="control-label"><span class="red">*</span> Username:</form:label>
 
                         <div class="controls">
-                            <form:input path="account.username" type="text" class="input-xlarge"/>
+                            <form:input path="username" type="text" class="input-xlarge"/>
                         </div>
                     </div>
                     <div class="control-group">
-                        <form:label path="account.password" class="control-label"><span class="red">*</span> Password:</form:label>
+                        <form:label path="password" class="control-label"><span class="red">*</span> Password:</form:label>
 
                         <div class="controls">
-                            <form:input path="account.password" type="password" class="input-xlarge"/>
+                            <form:input path="password" type="password" class="input-xlarge"/>
                         </div>
                     </div>
                 </fieldset>
