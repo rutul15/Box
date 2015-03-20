@@ -9,10 +9,10 @@
 <%@ include file="template/header.html" %>
 <!-- Account Login-->
 <div class="row">
-    <div class="span9">
+    <div class="span12">
         <h1 class="heading1"><span class="maintext">Login</span><span class="subtext">First Login here to View All your account information</span>
         </h1>
-        <section class="newcustomer">
+        <section class="newcustomer span4">
             <h2 class="heading2">New Customer </h2>
 
             <div class="loginbox">
@@ -25,7 +25,7 @@
                 <a href="/register" class="btn btn-orange">Continue</a>
             </div>
         </section>
-        <section class="returncustomer">
+        <section class="returncustomer span4">
             <h2 class="heading2">Returning Customer </h2>
 
             <div class="loginbox">
@@ -60,7 +60,6 @@
             </div>
         </section>
     </div>
-    <%@ include file="template/sidebar.html" %>
 
     <!-- Sidebar End-->
 </div>

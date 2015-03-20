@@ -1,5 +1,7 @@
 package com.davidoladeji.box.model;
 
+import com.davidoladeji.box.util.Encrypter;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -147,7 +149,8 @@ public class Account {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        Encrypter encrypter = new Encrypter();
+        this.password = encrypter.encrypt(password);
     }
 
 

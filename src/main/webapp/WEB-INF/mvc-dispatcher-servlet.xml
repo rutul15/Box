@@ -21,6 +21,14 @@
     <mvc:resources mapping="img/**" location="resources/img/"/>
 
 
+    <mvc:resources mapping="admin/404/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/404/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/404/img/**" location="resources/admin/img/"/>
+
+    <mvc:resources mapping="admin/403/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/403/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/403/img/**" location="resources/admin/img/"/>
+
     <mvc:resources mapping="admin/editProduct/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/editProduct/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/editProduct/img/**" location="resources/admin/img/"/>
@@ -34,6 +42,9 @@
     <mvc:resources mapping="admin/img/**" location="resources/admin/img/"/>
     <mvc:resources mapping="admin/php/**" location="resources/admin/php/"/>
     <mvc:resources mapping="/favicon.ico" location="resources/img/favicon.ico"/>
+
+
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

@@ -33,10 +33,6 @@ public class Transfer {
     private Long mileage;
 
     @Basic
-    @Column(name = "truck_id")
-    private int truckId;
-
-    @Basic
     @Column(name = "transfer_status_id")
     private int transferStatusId;
 
@@ -85,16 +81,6 @@ public class Transfer {
         this.mileage = mileage;
     }
 
-
-    public int getTruckId() {
-        return truckId;
-    }
-
-    public void setTruckId(int truckId) {
-        this.truckId = truckId;
-    }
-
-
     public int getTransferStatusId() {
         return transferStatusId;
     }
@@ -103,34 +89,4 @@ public class Transfer {
         this.transferStatusId = transferStatusId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Transfer transfer = (Transfer) o;
-
-        if (departureWarehouse != transfer.departureWarehouse) return false;
-        if (destinationWarehouse != transfer.destinationWarehouse) return false;
-        if (transferStatusId != transfer.transferStatusId) return false;
-        if (truckId != transfer.truckId) return false;
-        if (id != null ? !id.equals(transfer.id) : transfer.id != null) return false;
-        if (mileage != null ? !mileage.equals(transfer.mileage) : transfer.mileage != null) return false;
-        if (transferTimestamp != null ? !transferTimestamp.equals(transfer.transferTimestamp) : transfer.transferTimestamp != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (transferTimestamp != null ? transferTimestamp.hashCode() : 0);
-        result = 31 * result + destinationWarehouse;
-        result = 31 * result + departureWarehouse;
-        result = 31 * result + (mileage != null ? mileage.hashCode() : 0);
-        result = 31 * result + truckId;
-        result = 31 * result + transferStatusId;
-        return result;
-    }
 }

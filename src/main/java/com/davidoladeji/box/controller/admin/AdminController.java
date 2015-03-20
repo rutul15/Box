@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 @SessionAttributes({"countsList"})
 public class AdminController {
 
@@ -82,7 +81,7 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = {"","/dashboard"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/admin", "/admin/dashboard"}, method = RequestMethod.GET)
     public ModelAndView adminDashboard(ModelAndView model) {
         model.addObject("title", "Dashboard!");
         model.setViewName("admin/dashboard");

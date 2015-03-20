@@ -1,4 +1,5 @@
 <!-- Sidebar Start-->
+<security:authorize access="hasRole('ROLE_ADMIN') OR hasRole('ROLE_USER') OR hasRole('ROLE_EMPLOYEE') OR hasRole('ROLE_DRIVER')">
 <aside class="span3">
     <div class="sidewidt">
         <h2 class="heading2"><span>Account</span></h2>
@@ -33,3 +34,4 @@
         </ul>
     </div>
 </aside>
+</security:authorize>

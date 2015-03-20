@@ -294,8 +294,8 @@ padding:5px;
 .checkoutstep { display:none; margin:15px 0 30px 0; background:#fff; padding:15px; }
 .checkoutstep textarea { width:95% }
 .checkoutstep:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-.newcustomer, .returncustomer { width:40%; float:left; border:1px solid #E7E7E7; padding:15px 20px; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; }
-.newcustomer { margin-right:5%; }
+.newcustomer, .returncustomer { width:35%; float:left; border:1px solid #E7E7E7; padding:15px 20px; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; }
+.newcustomer { width:30%; margin-right:15%; }
 .privacy { float:right; margin:10px 10px 0 0 }
 /* javascripts */
 .accrodian-trigger { padding:8px 8px 8px 8px; display:block; margin:5px 0; border:1px solid #D6D4CB; cursor:pointer }

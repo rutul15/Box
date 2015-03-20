@@ -63,10 +63,10 @@
                         <form:label path="dob" class="control-label"><span class="red">*</span> Date of Birth:</form:label>
 
                         <div class="controls">
-                            <fmt:formatDate value="${account.dob}" var="dob"
+                            <fmt:formatDate value="${dob}" var="dob"
                                             pattern="yyyy-MM-dd" />
                             <form:input class="date-pick input-xlarge"
-                                        path="account.dob" name="end"
+                                        path="dob" name="end"
                                         value = "${dob}"  type="date"/>
                         </div>
                     </div>

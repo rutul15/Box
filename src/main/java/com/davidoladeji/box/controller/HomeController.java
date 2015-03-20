@@ -4,16 +4,17 @@ package com.davidoladeji.box.controller;
 import com.davidoladeji.box.model.Account;
 import com.davidoladeji.box.model.Product;
 import com.davidoladeji.box.repository.*;
+import com.davidoladeji.box.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -25,7 +26,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 @SessionAttributes({"countsList"})
-public class HomeController {
+public class HomeController   {
+
+
 
     @Autowired
     AccountRepository accountRepository;
@@ -54,7 +57,7 @@ public class HomeController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView homePage(ModelAndView model) {
+    public ModelAndView homePage(ModelAndView model) throws ResourceNotFoundException{
         model.addObject("title", "Home page!");
         model.addObject("breadcrumb", "*");
 
@@ -69,7 +72,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public ModelAndView loginPage(ModelAndView model) {
+    public ModelAndView loginPage(ModelAndView model) throws ResourceNotFoundException{
         model.addObject("title", "Login");
         model.addObject("breadcrumb", "Login");
 
@@ -96,20 +99,20 @@ public class HomeController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ModelAndView registerPost(ModelAndView model, @Valid @ModelAttribute("account")Account account, BindingResult result) {
+    public ModelAndView registerPost(ModelAndView model, @ModelAttribute("account")Account account, BindingResult result, final RedirectAttributes redirectAttributes) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 
-        if (result.hasErrors()) {
-            model.setViewName("register");
-            return model;
+       // if (result.hasErrors()) {
+          //  model.setViewName("register");
+          //  return model;
 
-        }else{
+      //  }else{
 
             accountRepository.save(account);
-            model.setViewName("index");
+            model.setViewName("redirect:/");
             return model;
-        }
+       // }
 
 
     }
@@ -150,5 +153,32 @@ public class HomeController {
         model.setViewName("cart");
         return model;
     }
+
+    @RequestMapping(value = "403", method = RequestMethod.GET)
+    public ModelAndView accessDenied(ModelAndView model, Principal user) {
+        model.addObject("title", "Access Denied");
+
+        if (user != null) {
+            model.addObject("msg", "Hi " + user.getName()
+                    + ", you do not have permission to access this page!");
+        } else {
+            model.addObject("msg",
+                    "You do not have permission to access this page!");
+        }
+        model.setViewName("/403");
+        return model;
+    }
+
+    @RequestMapping(value = "404", method = RequestMethod.GET)
+    public ModelAndView pageNotFound(ModelAndView model) {
+        model.addObject("title", "Page Not Found");
+
+            model.addObject("msg", "The page is unavailable, maybe nect time!");
+
+        model.setViewName("/404");
+        return model;
+    }
+
+
 
 }
