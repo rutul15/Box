@@ -19,11 +19,16 @@
       <column name="mobile" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="staffid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="country" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="postcode" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addresslineone" sqlType="VARCHAR" precision="120" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addresslinetwo" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_Account_Gender1" columns="gender" ref-table="gender" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="id" columns="role_id" ref-table="role" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_Driver_Account1" table="driver" schema="" catalog="box" columns="account_id"/>
-      <exported-key name="fk_Employee_Account" table="employee" schema="" catalog="box" columns="account_id"/>
       <index name="email_UNIQUE" unique="true" columns="email"/>
       <index name="unique_id" unique="true" columns="id"/>
       <index name="fk_Account_Gender1_idx" unique="false" columns="gender"/>
@@ -85,11 +90,7 @@
     <table name="employee" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="staffid" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id,account_id"/>
-      <foreign-key name="fk_Employee_Account" columns="account_id" ref-table="account" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="account_id_UNIQUE" unique="true" columns="account_id"/>
-      <index name="fk_Driver_Account1_idx" unique="false" columns="account_id"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="gender" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

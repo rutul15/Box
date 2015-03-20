@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @IdClass(DriverPK.class)
 @Table(name = "driver")
-public class Driver {
+public class Driver extends Account{
 
     @Id
     @Column(name = "id")

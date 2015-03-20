@@ -4,9 +4,7 @@
     <root id="archive" name="BoxB.war">
       <element id="artifact" artifact-name="BoxB:war exploded" />
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="jackcess-2.0.8" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
     </root>
   </artifact>

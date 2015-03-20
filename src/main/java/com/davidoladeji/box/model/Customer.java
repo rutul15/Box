@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer extends Account{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +30,6 @@ public class Customer {
     @Column(name = "country")
     private String country;
 
-
-    @OneToOne (cascade=CascadeType.PERSIST)
-    Account account;
 
 
     public Long getId() {
@@ -82,14 +79,6 @@ public class Customer {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
 }

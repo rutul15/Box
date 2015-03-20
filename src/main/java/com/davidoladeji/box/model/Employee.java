@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @IdClass(EmployeePK.class)
 @Table(name = "employee")
-public class Employee {
+public class Employee extends Account{
 
     @Id
     @Column(name = "id")
@@ -18,9 +18,7 @@ public class Employee {
     @Column(name = "staffid")
     private Long staffid;
 
-    @Id
-    @Column(name = "account_id")
-    private int accountId;
+
 
 
     public Long getId() {
@@ -40,34 +38,4 @@ public class Employee {
         this.staffid = staffid;
     }
 
-
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        if (accountId != employee.accountId) return false;
-        if (id != employee.id) return false;
-        if (staffid != null ? !staffid.equals(employee.staffid) : employee.staffid != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (staffid != null ? staffid.hashCode() : 0);
-        result = 31 * result + accountId;
-        return result;
-    }
 }
