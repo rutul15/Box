@@ -1,0 +1,43 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <context:component-scan base-package="com.davidoladeji.box"/>
+
+    <jpa:repositories base-package="com.davidoladeji.box.repository"/>
+
+    <context:annotation-config/>
+
+    <mvc:annotation-driven/>
+
+
+    <mvc:resources mapping="css/**" location="resources/css/"/>
+    <mvc:resources mapping="js/**" location="resources/js/"/>
+    <mvc:resources mapping="images/**" location="resources/image/"/>
+    <mvc:resources mapping="img/**" location="resources/img/"/>
+
+
+    <mvc:resources mapping="admin/editProduct/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/editProduct/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/editProduct/img/**" location="resources/admin/img/"/>
+
+    <mvc:resources mapping="admin/addStock/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/addStock/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/addStock/img/**" location="resources/admin/img/"/>
+
+    <mvc:resources mapping="admin/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/img/**" location="resources/admin/img/"/>
+    <mvc:resources mapping="admin/php/**" location="resources/admin/php/"/>
+    <mvc:resources mapping="/favicon.ico" location="resources/img/favicon.ico"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>

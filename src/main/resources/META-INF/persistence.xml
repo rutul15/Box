@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>com.davidoladeji.box.model.Account</class>
+        <class>com.davidoladeji.box.model.Cart</class>
+        <class>com.davidoladeji.box.model.Cartitem</class>
+        <class>com.davidoladeji.box.model.Customer</class>
+        <class>com.davidoladeji.box.model.Driver</class>
+        <class>com.davidoladeji.box.model.Employee</class>
+        <class>com.davidoladeji.box.model.Gender</class>
+        <class>com.davidoladeji.box.model.Location</class>
+        <class>com.davidoladeji.box.model.Orders</class>
+        <class>com.davidoladeji.box.model.OrderStatus</class>
+        <class>com.davidoladeji.box.model.Orderitem</class>
+        <class>com.davidoladeji.box.model.Product</class>
+        <class>com.davidoladeji.box.model.ProductStock</class>
+        <class>com.davidoladeji.box.model.Role</class>
+        <class>com.davidoladeji.box.model.TransferStatus</class>
+        <class>com.davidoladeji.box.model.Transfer</class>
+        <class>com.davidoladeji.box.model.Truck</class>
+        <class>com.davidoladeji.box.model.Warehouse</class>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/box"/>
+
+            <property name="hibernate.connection.username" value="daveola"/>
+            <property name="hibernate.connection.password" value="mydream"/>
+            <property name="hibernate.max_fetch_depth" value="5"/>
+            <property name="hibernate.show_sql" value="true"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>
