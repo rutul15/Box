@@ -1,7 +1,6 @@
 package com.davidoladeji.box.repository;
 
 import com.davidoladeji.box.model.Account;
-import com.davidoladeji.box.model.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
@@ -11,7 +10,7 @@ import javax.transaction.Transactional;
  */
 
 @Transactional
-public interface DriverRepository extends JpaRepository<Driver, Long> {
+public interface DriverRepository extends JpaRepository<Account, Long> {
 
 
 }

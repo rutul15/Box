@@ -29,6 +29,7 @@
       <foreign-key name="fk_Account_Gender1" columns="gender" ref-table="gender" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="id" columns="role_id" ref-table="role" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_Driver_Account1" table="driver" schema="" catalog="box" columns="account_id"/>
+      <exported-key name="orders_ibfk_1" table="orders" schema="" catalog="box" columns="account_id"/>
       <index name="email_UNIQUE" unique="true" columns="email"/>
       <index name="unique_id" unique="true" columns="id"/>
       <index name="fk_Account_Gender1_idx" unique="false" columns="gender"/>
@@ -38,12 +39,8 @@
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="timestamp" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="totalprice" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="customer_id" columns="customer_id" ref-table="customer" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="cart_id" table="cartitem" schema="" catalog="box" columns="cart_id"/>
-      <index name="customer_id_UNIQUE" unique="true" columns="customer_id"/>
-      <index name="customer_id_idx" unique="false" columns="customer_id"/>
     </table>
     <table name="cartitem" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -65,32 +62,14 @@
       <column name="timestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <primary-key name="PRIMARY" columns="Products_id,id,cart_id"/>
     </table>
-    <table name="customer" schema="" catalog="box" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="country" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="postcode" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
-      <column name="addresslineone" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
-      <column name="addresslinetwo" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12"/>
-      <column name="city" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
-      <column name="account_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="customer_id" table="cart" schema="" catalog="box" columns="customer_id"/>
-      <exported-key name="account_id" table="orders" schema="" catalog="box" columns="customer_id"/>
-    </table>
     <table name="driver" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="staffid" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id,account_id"/>
       <foreign-key name="fk_Driver_Account1" columns="account_id" ref-table="account" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_Trucks_Accounts1" table="truck" schema="" catalog="box" columns="driver_id"/>
       <index name="account_id_UNIQUE" unique="true" columns="account_id"/>
       <index name="fk_Driver_Account1_idx" unique="false" columns="account_id"/>
-    </table>
-    <table name="employee" schema="" catalog="box" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="staffid" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="gender" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -103,9 +82,8 @@
       <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="fk_Transfers_Location1" table="transfers" schema="" catalog="box" columns="destination_warehouse"/>
-      <exported-key name="fk_Transfers_Location2" table="transfers" schema="" catalog="box" columns="departure_warehouse"/>
-      <exported-key name="fk_Truck_Location1" table="truck" schema="" catalog="box" columns="location_id"/>
+      <exported-key name="fk_Transfers_Location1" table="transfer" schema="" catalog="box" columns="destination_warehouse"/>
+      <exported-key name="fk_Transfers_Location2" table="transfer" schema="" catalog="box" columns="departure_warehouse"/>
       <exported-key name="fk_Warehouses_Locations1" table="warehouse" schema="" catalog="box" columns="location_id"/>
     </table>
     <table name="order_status" schema="" catalog="box" type="TABLE">
@@ -134,15 +112,14 @@
       <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="order_time" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="order_status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="choice_warehouse" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="payment_option" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="account_id" columns="customer_id" ref-table="customer" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="order_status" columns="order_status" ref-table="order_status" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="orders_ibfk_1" columns="account_id" ref-table="account" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="order_id" table="orderitem" schema="" catalog="box" columns="order_id"/>
-      <index name="account_id_idx" unique="false" columns="customer_id"/>
       <index name="order_status_idx" unique="false" columns="order_status"/>
     </table>
     <table name="product" schema="" catalog="box" type="TABLE">
@@ -190,14 +167,19 @@
       <index name="codename_UNIQUE" unique="true" columns="codename"/>
     </table>
     <table name="transfer" schema="" catalog="box" type="TABLE">
-      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="departure_warehouse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="transfer_timestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="destination_warehouse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="departure_warehouse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="mileage" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="transfer_status_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="transfer_timestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="truck_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_Transfers_Location1" columns="destination_warehouse" ref-table="location" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Transfers_Location2" columns="departure_warehouse" ref-table="location" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="transfer_status_id" columns="transfer_status_id" ref-table="transfer_status" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Transfers_Location1_idx" unique="false" columns="destination_warehouse"/>
+      <index name="fk_Transfers_Location2_idx" unique="false" columns="departure_warehouse"/>
+      <index name="transfer_status_id_idx" unique="false" columns="transfer_status_id"/>
     </table>
     <table name="transfer_status" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -205,37 +187,7 @@
       <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="transfer_status_id" table="transfers" schema="" catalog="box" columns="transfer_status_id"/>
-    </table>
-    <table name="transfers" schema="" catalog="box" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="transfer_timestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
-      <column name="destination_warehouse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="departure_warehouse" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="mileage" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="truck_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="transfer_status_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="fk_Transfers_Location1" columns="destination_warehouse" ref-table="location" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_Transfers_Location2" columns="departure_warehouse" ref-table="location" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_Transfers_Truck1" columns="truck_id" ref-table="truck" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="transfer_status_id" columns="transfer_status_id" ref-table="transfer_status" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <index name="fk_Transfers_Location1_idx" unique="false" columns="destination_warehouse"/>
-      <index name="fk_Transfers_Location2_idx" unique="false" columns="departure_warehouse"/>
-      <index name="fk_Transfers_Truck1_idx" unique="false" columns="truck_id"/>
-      <index name="transfer_status_id_idx" unique="false" columns="transfer_status_id"/>
-    </table>
-    <table name="truck" schema="" catalog="box" type="TABLE">
-      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="driver_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="location_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
-      <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="fk_Truck_Location1" columns="location_id" ref-table="location" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fk_Trucks_Accounts1" columns="driver_id" ref-table="driver" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fk_Transfers_Truck1" table="transfers" schema="" catalog="box" columns="truck_id"/>
-      <index name="fk_Truck_Location1_idx" unique="false" columns="location_id"/>
-      <index name="fk_Trucks_Accounts1_idx" unique="false" columns="driver_id"/>
+      <exported-key name="transfer_status_id" table="transfer" schema="" catalog="box" columns="transfer_status_id"/>
     </table>
     <table name="warehouse" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

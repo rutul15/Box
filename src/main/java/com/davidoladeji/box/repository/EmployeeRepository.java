@@ -1,7 +1,6 @@
 package com.davidoladeji.box.repository;
 
 import com.davidoladeji.box.model.Account;
-import com.davidoladeji.box.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
@@ -11,7 +10,7 @@ import javax.transaction.Transactional;
  */
 
 @Transactional
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Account, Long> {
 
 
 }
