@@ -1,5 +1,7 @@
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>${title} - Buy the Box :: Shopping boxes</title>
@@ -48,9 +50,9 @@
                     </div>
                     <!-- Top Nav End -->
                     <div class="pull-right">
-                        <form class="form-search top-search">
-                            <input type="text" class="input-medium">
-                        </form>
+                        <form:form  action="/search" commandName="productsearch" method="get" class="form-search top-search">
+                            <form:input  path="searchterm" type="text" class="input-medium"></form:input>
+                        </form:form>
                     </div>
                 </div>
             </div>

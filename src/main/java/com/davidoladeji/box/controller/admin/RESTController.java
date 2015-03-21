@@ -1,12 +1,16 @@
 package com.davidoladeji.box.controller.admin;
 
 import com.davidoladeji.box.model.Distances;
+import com.davidoladeji.box.model.Location;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by Daveola on 3/20/2015.
@@ -25,4 +29,7 @@ public class RESTController {
         System.out.print(distances.toString());
         return new ModelAndView("distance", "distance", distances);
     }
+
+
+
 }

@@ -27,9 +27,6 @@
 
         <!-- Validation form -->
         <form:form id="validate" commandName="product" class="form" method="post" action="/admin/addProduct">
-            <form:hidden path="imageurl" value="img/product.jpg"/>
-            <form:hidden path="thumbnail" value="img/thumb.jpg"/>
-            <form:hidden path="smallimg" value="img/product-40x40.png"/>
             <fieldset>
                 <div class="widget">
                     <div class="title"><img src="img/icons/dark/alert.png" alt="" class="titleIcon" /><h6>Add a product</h6></div>

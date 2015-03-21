@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class PurchaseController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class PurchaseController {
     ProductRepository productRepository;
 
 
-    @RequestMapping(value = "/cart/add/", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "cart/add/", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody ModelAndView addToCart(ModelAndView model, @ModelAttribute("cart")Cart cart, BindingResult result, @RequestParam("productId")Long productId, @RequestParam("quantity")int quantity,
                                   HttpSession session) {
         model.addObject("title", "orders Page");

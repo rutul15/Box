@@ -21,6 +21,7 @@
           <dependency>web mvc-dispatcher servlet context</dependency>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/data-context.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/schedulingservice-context.xml</file>
         </fileset>
       </configuration>
     </facet>

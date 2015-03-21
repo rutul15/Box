@@ -63,7 +63,7 @@
                             </c:if>
 
 
-                            <td class="image"><a href="#"><img title="product" alt="product" src="${product.smallimg}"
+                            <td class="image"><a href="#"><img title="product" alt="product" src="img/product-40x40.png"
                                                                height="50" width="50"></a></td>
                             <td><a href="/admin/editProduct/${product.id}"> <img src="img/icons/color/pencil.png" alt=""></a> <a href="/admin/addStock/${product.id}"><img src="img/icons/color/notebook.png" alt=""></a><a href="/admin/deleteProduct/${product.id}"><img src="img/icons/color/cross.png" alt=""></a></td>
                         </tr>

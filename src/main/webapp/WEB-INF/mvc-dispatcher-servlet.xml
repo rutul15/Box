@@ -42,6 +42,10 @@
     <mvc:resources mapping="admin/addStock/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/addStock/img/**" location="resources/admin/img/"/>
 
+    <mvc:resources mapping="products/viewDetails/css/**" location="resources/css/"/>
+    <mvc:resources mapping="products/viewDetails/js/**" location="resources/js/"/>
+    <mvc:resources mapping="products/viewDetails/img/**" location="resources/img/"/>
+
     <mvc:resources mapping="admin/addProduct/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/addProduct/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/addProduct/img/**" location="resources/admin/img/"/>

@@ -122,9 +122,7 @@
       <column name="imageurl" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="featured" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
-      <column name="thumbnail" sqlType="VARCHAR" precision="90" scale="0" nullable="true" jdbcType="12"/>
-      <column name="smallimg" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12"/>
-      <column name="imgmidsize" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="stock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_CartItems_Products1" table="cartitem" schema="" catalog="box" columns="Products_id"/>
       <exported-key name="orderitem_ibfk_1" table="orderitem" schema="" catalog="box" columns="product_id"/>

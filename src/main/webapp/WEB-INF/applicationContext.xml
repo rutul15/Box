@@ -21,6 +21,9 @@
     <!-- For data config -->
     <import resource="data-context.xml"/>
 
+    <!-- Bring in Scheduler-->
+    <import resource="schedulingservice-context.xml"/>
+
     <bean id="messageSource"
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>

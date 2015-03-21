@@ -14,5 +14,7 @@ import java.util.List;
 @DynamicUpdate(value = true)
 public interface ProductStockRepository extends JpaRepository<ProductStock, Long> {
 
-        List<Product> findByProductIdAndWarehouse_Id(Long productId, Long warehouseId);
+        List<ProductStock> findByProductId(Long productId);
+
+        List<ProductStock> findByProductIdAndWarehouse_Id(Long productId, Long warehouseId);
 }

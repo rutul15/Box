@@ -1,6 +1,7 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Daveola on 2/16/2015.
@@ -11,12 +12,15 @@ public class ProductStock {
 
     @OneToOne
     Warehouse warehouse;
-    @Column(name = "product_id")
-    Long productId;
+
+    @ManyToOne
+    private Product product;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "stock")
     private int stock;
 
@@ -36,19 +40,20 @@ public class ProductStock {
         this.stock = productStock;
     }
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
     public Warehouse getWarehouse() {
         return warehouse;
     }
 
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
+    }
+
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

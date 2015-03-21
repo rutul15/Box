@@ -1,5 +1,8 @@
 package com.davidoladeji.box.model;
 
+import com.davidoladeji.box.repository.ProductStockRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,8 +13,7 @@ import java.util.List;
 @Table(name = "product")
 public class Product {
 
-    @OneToMany
-    List<ProductStock> productStock;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -28,20 +30,15 @@ public class Product {
     private Double salesPrice;
     @Column(name = "itemsperbox")
     private int itemsperbox;
-    @Column(name = "imageurl")
-    private String imageurl;
     @Column(name = "enabled")
     private boolean enabled;
     @Column(name = "featured")
     private boolean featured;
-    @Column(name = "thumbnail")
-    private String thumbnail;
-    @Column(name = "smallimg")
-    private String smallimg;
+
+    @OneToMany
+    List<ProductStock> productStock;
 
 
-    @Column(name = "imgmidsize")
-    private String imgmidsize;
 
     public Product() {
     }
@@ -110,15 +107,6 @@ public class Product {
     }
 
 
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
-    }
-
-
     public boolean isEnabled() {
         return enabled;
     }
@@ -136,29 +124,6 @@ public class Product {
         this.featured = featured;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    public String getSmallimg() {
-        return smallimg;
-    }
-
-    public void setSmallimg(String smallimg) {
-        this.smallimg = smallimg;
-    }
-
-    public String getImgmidsize() {
-        return imgmidsize;
-    }
-
-    public void setImgmidsize(String imgmidsize) {
-        this.imgmidsize = imgmidsize;
-    }
 
     public List<ProductStock> getProductStock() {
         return productStock;
@@ -166,38 +131,5 @@ public class Product {
 
     public void setProductStock(List<ProductStock> productStock) {
         this.productStock = productStock;
-    }
-
-
-
-
-    @PreUpdate
-    public void doPreUpdate() {
-        this.setImageurl("img/product.jpg");
-        this.setThumbnail("img/thumb.jpg");
-        this.setSmallimg("img/product-40x40.png");
-        this.setImgmidsize("img/product1a.jpg");
-
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        if (!id.equals(product.id)) return false;
-        if (name != null ? !name.equals(product.name) : product.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 }
