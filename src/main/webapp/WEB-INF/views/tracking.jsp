@@ -5,20 +5,13 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ page session="true" %>
 
-<%@ include file="template/header.html" %>
+
+<%@ include file="template/specialHeader.html" %>
 <!-- Header End -->
 
 <div id="maincontainer">
     <section id="product">
         <div class="container">
-            <!--  breadcrumb -->
-            <ul class="breadcrumb">
-                <li>
-                    <a href="#">Home</a>
-                    <span class="divider">/</span>
-                </li>
-                <li class="active"> Shopping Cart</li>
-            </ul>
             <h1 class="heading1"><span class="maintext"> Shopping Cart</span><span class="subtext"> All items in your  Shopping Cart</span>
             </h1>
             <!-- Cart-->
@@ -35,117 +28,7 @@
 
                     </tr>
                     <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Jeans</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-
-
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">T-shirt</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Shirt</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Camera</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Mobile</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
-                                                           height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Jeans</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
-
-                        </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
-                                                           src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
-                                             alt=""></a></td>
-
-
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
-
-                    </tr>
-                    <tr>
-                        <td class="image"><a href="#"><img title="product" alt="product" src="img/prodcut-40x40.jpg"
+                        <td class="image"><a href="#"><img title="product" alt="product" src="img/product-40x40.png"
                                                            height="50" width="50"></a></td>
                         <td class="name"><a href="#">Jeans</a></td>
                         <td class="model">Purchased Product</td>
@@ -165,31 +48,19 @@
                 </table>
             </div>
             <div class="cartoptionbox">
-                <h4 class="heading4"> Choose if you have a discount code or reward points you want to use or would like
-                    to estimate your delivery cost. </h4>
-                <input type="radio" class="radio">
-                Use Coupon Code <br>
-                <input type="radio" class="radio">
-                Use Gift Voucher <br>
-                <input type="radio" class="radio" checked="checked">
-                Estimate Shipping & Taxes <br><br>
+
 
                 <form class="form-vertical form-inline">
-                    <h4 class="heading4"> Enter your destination to get a shipping estimate.</h4>
+                    <h4 class="heading4"> Choose preferred warehouse.</h4>
                     <fieldset>
                         <div class="control-group">
-                            <label class="control-label">Select list</label>
+                            <label class="control-label">Select Warehouse</label>
 
                             <div class="controls">
                                 <select class="span3 cartcountry">
                                     <option>Country:</option>
                                     <option>United Kindom</option>
                                     <option>United States</option>
-                                </select>
-                                <select class="span3 cartstate">
-                                    <option>Region / State:</option>
-                                    <option>Angus</option>
-                                    <option>highlands</option>
                                 </select>
                                 <input type="submit" value="Get Quotes" class="btn btn-orange">
                             </div>
@@ -201,21 +72,10 @@
                 <div class="pull-right">
                     <div class="span4 pull-right">
                         <table class="table table-striped table-bordered ">
-                            <tr>
-                                <td><span class="extra bold">Sub-Total :</span></td>
-                                <td><span class="bold">$101.0</span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="extra bold">Eco Tax (-5.00) :</span></td>
-                                <td><span class="bold">$11.0</span></td>
-                            </tr>
-                            <tr>
-                                <td><span class="extra bold">VAT (18.2%) :</span></td>
-                                <td><span class="bold">$21.0</span></td>
-                            </tr>
+
                             <tr>
                                 <td><span class="extra bold totalamout">Total :</span></td>
-                                <td><span class="bold totalamout">$150.28</span></td>
+                                <td><span class="bold totalamout">&pound; 150.28</span></td>
                             </tr>
                         </table>
                         <input type="submit" value="CheckOut" class="btn btn-orange pull-right">

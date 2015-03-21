@@ -21,6 +21,7 @@
     <mvc:resources mapping="img/**" location="resources/img/"/>
 
 
+
     <mvc:resources mapping="admin/404/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/404/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/404/img/**" location="resources/admin/img/"/>
@@ -28,7 +29,6 @@
     <mvc:resources mapping="admin/403/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/403/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/403/img/**" location="resources/admin/img/"/>
-
 
     <mvc:resources mapping="admin/transfers/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/transfers/js/**" location="resources/admin/js/"/>
@@ -42,10 +42,6 @@
     <mvc:resources mapping="admin/addStock/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/addStock/img/**" location="resources/admin/img/"/>
 
-    <mvc:resources mapping="products/viewDetails/css/**" location="resources/css/"/>
-    <mvc:resources mapping="products/viewDetails/js/**" location="resources/js/"/>
-    <mvc:resources mapping="products/viewDetails/img/**" location="resources/img/"/>
-
     <mvc:resources mapping="admin/addProduct/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/addProduct/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/addProduct/img/**" location="resources/admin/img/"/>
@@ -55,6 +51,23 @@
     <mvc:resources mapping="admin/img/**" location="resources/admin/img/"/>
     <mvc:resources mapping="admin/php/**" location="resources/admin/php/"/>
     <mvc:resources mapping="/favicon.ico" location="resources/img/favicon.ico"/>
+
+
+    <mvc:resources mapping="cart/css/**" location="resources/css/"/>
+    <mvc:resources mapping="cart/js/**" location="resources/js/"/>
+    <mvc:resources mapping="cart/img/**" location="resources/img/"/>
+
+    <mvc:resources mapping="track/css/**" location="resources/css/"/>
+    <mvc:resources mapping="track/js/**" location="resources/js/"/>
+    <mvc:resources mapping="track/img/**" location="resources/img/"/>
+
+    <mvc:resources mapping="order/css/**" location="resources/css/"/>
+    <mvc:resources mapping="order/js/**" location="resources/js/"/>
+    <mvc:resources mapping="order/img/**" location="resources/img/"/>
+
+    <mvc:resources mapping="products/viewDetails/css/**" location="resources/css/"/>
+    <mvc:resources mapping="products/viewDetails/js/**" location="resources/js/"/>
+    <mvc:resources mapping="products/viewDetails/img/**" location="resources/img/"/>
 
 
 

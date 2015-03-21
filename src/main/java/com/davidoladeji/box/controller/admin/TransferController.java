@@ -1,9 +1,7 @@
 package com.davidoladeji.box.controller.admin;
 
-import com.davidoladeji.box.model.Orders;
 import com.davidoladeji.box.model.Transfer;
 import com.davidoladeji.box.repository.AccountRepository;
-import com.davidoladeji.box.repository.OrderRepository;
 import com.davidoladeji.box.repository.TransferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

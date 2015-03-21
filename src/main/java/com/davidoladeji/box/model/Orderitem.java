@@ -1,6 +1,7 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Daveola on 2/16/2015.
@@ -9,30 +10,30 @@ import javax.persistence.*;
 @Table(name = "orderitem")
 public class Orderitem {
 
+
+    @OneToOne
+    private Product product;
     @Id
     @Column(name = "id")
     private Long id;
-
     @Basic
     @Column(name = "order_id")
     private Long order_id;
-
     @Basic
     @Column(name = "price")
     private Double price;
-
     @Basic
-    @Column(name = "transfer_id")
+    @Column(name = "transfer_id", insertable = false, updatable = false)
     private int transferId;
-
-
     @Column(name = "quantity")
     private int quantity;
-
-
-    @Column(name = "product_id")
+    @Column(name = "product_id", insertable = false, updatable = false)
     private Long productId;
 
+    @OneToOne
+    private Transfer transfer;
+    @OneToMany
+    List<Orders> order;
 
     public Orderitem() {
     }
@@ -103,4 +104,19 @@ public class Orderitem {
     }
 
 
+    public Transfer getTransfer() {
+        return transfer;
+    }
+
+    public void setTransfer(Transfer transfer) {
+        this.transfer = transfer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

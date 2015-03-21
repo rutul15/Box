@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@SessionAttributes({"countsList"})
+@SessionAttributes({"countsList"}) // The numbers showing various numbers/counts of entities across the backend
 public class AdminController {
 
     @Autowired
@@ -88,7 +88,9 @@ public class AdminController {
 
         model.addObject("username", user.getName());
 
-        model.addObject("warehouses", warehouseRepository.findAll());
+        model.addObject("transferstatuses", transferRepository.findAll());
+        model.addObject("ordersList", orderRepository.findAll());
+        model.addObject("warehousesList", warehouseRepository.findAll());
         model.setViewName("admin/dashboard");
         return model;
     }

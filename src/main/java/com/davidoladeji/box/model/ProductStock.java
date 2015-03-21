@@ -1,7 +1,6 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Daveola on 2/16/2015.

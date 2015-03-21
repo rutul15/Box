@@ -7,11 +7,13 @@ import com.davidoladeji.box.repository.AccountRepository;
 import com.davidoladeji.box.repository.ProductRepository;
 import com.davidoladeji.box.repository.ProductStockRepository;
 import com.davidoladeji.box.repository.WarehouseRepository;
-import com.davidoladeji.box.util.ProductManger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -37,8 +39,6 @@ public class HomeProductsController {
     WarehouseRepository warehouseRepository;
 
 
-
-
     @RequestMapping(value = "/viewDetails/{id}", method = RequestMethod.GET)
     public ModelAndView productView(ModelAndView model, @PathVariable("id") Long id, BindingResult result, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Product Details Page");
@@ -49,11 +49,7 @@ public class HomeProductsController {
         product.setProductStock(productStockRepository.findByProductId(id));
 
 
-        /**Use product stock calculator logic to calculate total stock for product to
-        be viewed*/
-               ProductManger productManger = new ProductManger();
-                int totalstock = productManger.getProductTotalStock(product);
-                model.addObject("totalstock", totalstock);
+        model.addObject("totalstock", product.getTotalstock());
 
 
         model.setViewName("product");

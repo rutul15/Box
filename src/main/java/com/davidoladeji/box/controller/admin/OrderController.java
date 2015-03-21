@@ -1,7 +1,6 @@
 package com.davidoladeji.box.controller.admin;
 
 import com.davidoladeji.box.model.Orders;
-import com.davidoladeji.box.model.Product;
 import com.davidoladeji.box.repository.AccountRepository;
 import com.davidoladeji.box.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

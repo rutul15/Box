@@ -28,7 +28,7 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="fk_Account_Gender1" columns="gender" ref-table="gender" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="id" columns="role_id" ref-table="role" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="orders_ibfk_1" table="orders" schema="" catalog="box" columns="customer_id"/>
+      <exported-key name="orders_ibfk_1" table="orders" schema="" catalog="box" columns="account_id"/>
       <index name="email_UNIQUE" unique="true" columns="email"/>
       <index name="unique_id" unique="true" columns="id"/>
       <index name="fk_Account_Gender1_idx" unique="false" columns="gender"/>
@@ -82,7 +82,7 @@
       <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <exported-key name="order_status" table="orders" schema="" catalog="box" columns="order_status"/>
+      <exported-key name="order_status" table="orders" schema="" catalog="box" columns="order_status_id"/>
     </table>
     <table name="orderitem" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -99,17 +99,23 @@
     <table name="orders" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="order_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="order_time" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="order_status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="order_time" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="order_status_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
-      <column name="choice_warehouse" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="payment_option" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
-      <column name="customer_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="warehouse_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
-      <foreign-key name="order_status" columns="order_status" ref-table="order_status" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="orders_ibfk_1" columns="customer_id" ref-table="account" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="order_status" columns="order_status_id" ref-table="order_status" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="orders_ibfk_1" columns="account_id" ref-table="account" ref-schema="" ref-catalog="box" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="order_id" table="orderitem" schema="" catalog="box" columns="order_id"/>
-      <index name="order_status_idx" unique="false" columns="order_status"/>
+      <index name="customer_id" unique="false" columns="account_id"/>
+      <index name="order_status_idx" unique="false" columns="order_status_id"/>
+    </table>
+    <table name="orders_orderitem" schema="" catalog="box" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="order_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="orderitem_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="product" schema="" catalog="box" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>

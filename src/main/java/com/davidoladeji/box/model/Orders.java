@@ -13,6 +13,10 @@ public class Orders {
 
     @OneToMany
     List<Orderitem> orderItems;
+    @ManyToOne
+    Account account;
+    @OneToOne
+    Warehouse warehouse;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -21,16 +25,10 @@ public class Orders {
     private Date orderDate;
     @Column(name = "order_time")
     private Date orderTime;
-    @Column(name = "order_status")
+    @Column(name = "order_status_id")
     private int orderStatus;
-    @Column(name = "customer_id")
-    private int customerId;
     @Column(name = "price")
     private Double price;
-    @Column(name = "choice_warehouse")
-    private String choiceWarehouse;
-    @Column(name = "payment_option")
-    private String paymentOption;
 
     public Long getId() {
         return id;
@@ -67,15 +65,6 @@ public class Orders {
     }
 
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-
     public Double getPrice() {
         return price;
     }
@@ -85,21 +74,27 @@ public class Orders {
     }
 
 
-    public String getChoiceWarehouse() {
-        return choiceWarehouse;
+    public Warehouse getWarehouse() {
+        return warehouse;
     }
 
-    public void setChoiceWarehouse(String choiceWarehouse) {
-        this.choiceWarehouse = choiceWarehouse;
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
     }
 
-
-    public String getPaymentOption() {
-        return paymentOption;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setPaymentOption(String paymentOption) {
-        this.paymentOption = paymentOption;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
+    public List<Orderitem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<Orderitem> orderItems) {
+        this.orderItems = orderItems;
+    }
 }

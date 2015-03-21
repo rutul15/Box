@@ -15,10 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Towns {
 
 
-    @XmlElement (name = "town")
+    @XmlElement(name = "town")
     private Town town;
-
-
 
 
     public Towns() {

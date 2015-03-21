@@ -1,9 +1,7 @@
 package com.davidoladeji.box.controller.admin;
 
 import com.davidoladeji.box.model.Product;
-import com.davidoladeji.box.model.ProductStock;
 import com.davidoladeji.box.repository.ProductRepository;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -66,15 +63,18 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "/editProduct", method = RequestMethod.POST)
-    public ModelAndView adminEditProductPost(ModelAndView model, BindingResult result, @RequestParam Long id, final RedirectAttributes redirectAttributes) {
+    public ModelAndView adminEditProductPost(ModelAndView model, @RequestParam Product product, @RequestParam Long id, final RedirectAttributes redirectAttributes,  BindingResult result) {
         model.addObject("title", "Products Page");
 
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("product", productRepository.findOne(id));
             model.setViewName("redirect:/admin/editProduct");
-        }else{
+        } else {
 
-            productRepository.save(productRepository.findOne(id));
+            if (product.getId() == null && productRepository.findOne(id) != null){
+              product = productRepository.findOne(id);
+            }
+            productRepository.save(product);
             model.setViewName("redirect:/admin/products");
 
         }

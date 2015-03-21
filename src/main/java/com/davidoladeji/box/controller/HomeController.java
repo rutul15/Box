@@ -5,30 +5,39 @@ import com.davidoladeji.box.model.Account;
 import com.davidoladeji.box.model.Product;
 import com.davidoladeji.box.model.Search;
 import com.davidoladeji.box.repository.*;
-import com.davidoladeji.box.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
 /**
- * Contains navigation control methods to pages on the frontend of the application
+ * Contains frontend navigation control methods to pages on the frontend of the application
+ * <p/>
+ * <p/>
+ * Home Page: Available to logged in users
+ * Login Page: Doubles as the default view
+ * Logout Page: page displayed when users log out
+ * Registration Page: Users can register new accounts
+ * Profile View page:
+ * Tracking Page: To view orders being tracked
+ * Cart View Page: view Items in cart
+ * Order  Page: To make actual order
+ * Error Pages: 404 and 403, page not found and access denied respectively
  */
-
 
 
 @Controller
 @RequestMapping("/")
 @SessionAttributes({"countsList"})
-public class HomeController   {
-
+public class HomeController {
 
 
     @Autowired
@@ -46,24 +55,14 @@ public class HomeController   {
     @Autowired
     WarehouseRepository warehouseRepository;
 
-    @Autowired
-    EmployeeRepository employeeRepository;
 
-
-    @Autowired
-    DriverRepository driverRepository;
-
-    @Autowired
-    CustomerRepository customerRepository;
-
-
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView homePage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result){
+    @RequestMapping(value = "index", method = RequestMethod.GET)
+    public ModelAndView homePage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Home page!");
         model.addObject("breadcrumb", "*");
 
         model.addObject("productsearch", search);
-        List<Product> featuredProductsList =  productRepository.findByFeatured(true);
+        List<Product> featuredProductsList = productRepository.findByFeatured(true);
         model.addObject("featuredProductsList", featuredProductsList);
 
         List<Product> productsList = productRepository.findAll();
@@ -75,10 +74,11 @@ public class HomeController   {
     }
 
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public ModelAndView loginPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result){
+    @RequestMapping(value = {"", "login"}, method = RequestMethod.GET)
+    public ModelAndView loginPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Login");
         model.addObject("breadcrumb", "Login");
+
 
         model.setViewName("login");
         return model;
@@ -94,7 +94,7 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.GET)
-      public ModelAndView registerPage(ModelAndView model, @ModelAttribute("account")Account account, @ModelAttribute("productsearch") Search search, BindingResult result) {
+    public ModelAndView registerPage(ModelAndView model, @ModelAttribute("account") Account account, @ModelAttribute("productsearch") Search search, BindingResult result) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 
@@ -103,26 +103,26 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ModelAndView registerPost(ModelAndView model, @ModelAttribute("account")Account account, BindingResult result, final RedirectAttributes redirectAttributes) {
+    public ModelAndView registerPost(ModelAndView model, @ModelAttribute("account") Account account, BindingResult result, final RedirectAttributes redirectAttributes) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 
-       // if (result.hasErrors()) {
-          //  model.setViewName("register");
-          //  return model;
+        // if (result.hasErrors()) {
+        //  model.setViewName("register");
+        //  return model;
 
-      //  }else{
+        //  }else{
 
-            accountRepository.save(account);
-            model.setViewName("redirect:/");
-            return model;
-       // }
+        accountRepository.save(account);
+        model.setViewName("redirect:/");
+        return model;
+        // }
 
 
     }
 
     @RequestMapping(value = "profile", method = RequestMethod.GET)
-    public ModelAndView accountProfilePage(ModelAndView model) {
+    public ModelAndView accountProfilePage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Profile");
         model.addObject("breadcrumb", "Profile");
 
@@ -132,7 +132,7 @@ public class HomeController   {
 
 
     @RequestMapping(value = "track", method = RequestMethod.GET)
-    public ModelAndView trackingItemPage(ModelAndView model) {
+    public ModelAndView trackingItemPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Track");
         model.addObject("breadcrumb", "Track");
 
@@ -141,7 +141,7 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "order", method = RequestMethod.GET)
-    public ModelAndView ordersPage(ModelAndView model) {
+    public ModelAndView ordersPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Order");
         model.addObject("breadcrumb", "Order");
 
@@ -150,7 +150,7 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "cart", method = RequestMethod.GET)
-    public ModelAndView cartPage(ModelAndView model) {
+    public ModelAndView cartPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Cart");
         model.addObject("breadcrumb", "Cart");
 
@@ -177,12 +177,11 @@ public class HomeController   {
     public ModelAndView pageNotFound(ModelAndView model) {
         model.addObject("title", "Page Not Found");
 
-            model.addObject("msg", "The page is unavailable, maybe next time!");
+        model.addObject("msg", "The page is unavailable, maybe next time!");
 
         model.setViewName("/404");
         return model;
     }
-
 
 
 }

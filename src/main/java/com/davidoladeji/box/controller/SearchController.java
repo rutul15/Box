@@ -1,7 +1,7 @@
 package com.davidoladeji.box.controller;
 
-import com.davidoladeji.box.model.*;
-import com.davidoladeji.box.repository.AccountRepository;
+import com.davidoladeji.box.model.Product;
+import com.davidoladeji.box.model.Search;
 import com.davidoladeji.box.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,8 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +24,6 @@ public class SearchController {
     ProductRepository productRepository;
 
 
-
-
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public ModelAndView searchProducts(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result, @RequestParam("searchterm") String searchterm) {
         model.addObject("title", "Search page!");
@@ -40,11 +36,10 @@ public class SearchController {
     }
 
 
-
     @RequestMapping(value = "searchresult", method = RequestMethod.GET)
-    public @ResponseBody ModelAndView searchResult(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result) {
-
-
+    public
+    @ResponseBody
+    ModelAndView searchResult(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result) {
 
 
         model.setViewName("searchresult");

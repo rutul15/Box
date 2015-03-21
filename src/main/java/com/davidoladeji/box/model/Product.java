@@ -1,9 +1,5 @@
 package com.davidoladeji.box.model;
 
-import com.davidoladeji.box.repository.ProductStockRepository;
-import com.davidoladeji.box.util.ProductManger;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +11,8 @@ import java.util.List;
 public class Product {
 
 
+    @OneToMany
+    List<ProductStock> productStock;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -35,13 +33,8 @@ public class Product {
     private boolean enabled;
     @Column(name = "featured")
     private boolean featured;
-
-    @Column(name="totalstock", nullable = true)
+    @Column(name = "totalstock", nullable = true)
     private int totalstock;
-
-    @OneToMany
-    List<ProductStock> productStock;
-
 
 
     public Product() {
@@ -130,8 +123,24 @@ public class Product {
 
 
     public int getTotalstock() {
-        ProductManger productManger = new ProductManger();
-        totalstock = productManger.getProductTotalStock(this);
+        int totalstock = 0, stock = 0, count = 0;
+
+        if (this.getProductStock() == null) {
+            //If its a new product
+            this.totalstock = 0;
+        } else if (this.getProductStock().size() >= 1 && this.getProductStock() != null) {
+            //Ensure The List of the Product Stock is not empty
+            while (this.getProductStock().listIterator().hasNext() && !(count > this.getProductStock().size() - 1)) {
+                //Get the stock as a number
+                stock = this.getProductStock().get(count).getStock();
+                totalstock += stock;
+                count++;
+            }
+            this.totalstock = totalstock;
+        } else {
+            this.totalstock = 0;
+        }
+
         return totalstock;
     }
 
@@ -148,14 +157,13 @@ public class Product {
     }
 
 
-
     @PostLoad
-    public void doPostLoad(){
+    public void doPostLoad() {
         this.setTotalstock(this.getTotalstock());
     }
 
     @PrePersist
-    public void doPrePersist(){
+    public void doPrePersist() {
         this.setTotalstock(this.getTotalstock());
     }
 }

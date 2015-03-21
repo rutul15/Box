@@ -116,7 +116,7 @@
                             <a class="prdocutname" href="/products/viewDetails/${product.id}">${product.name}</a>
 
                             <div class="thumbnail">
-                                <a href="#"><img alt="" src="/img/product1.jpg"></a>
+                                <a href="/products/viewDetails/${product.id}"><img alt="" src="/img/product1.jpg"></a>
 
                                 <div class="shortlinks">
                                     <a class="details" href="/products/viewDetails/${product.id}">DETAILS</a>
@@ -147,12 +147,10 @@
                             <a class="prdocutname" href="/products/viewDetails/${product.id}">${product.name}</a>
 
                             <div class="thumbnail">
-                                <a href="#"><img alt="" src="/img/product1a.jpg"></a>
+                                <a href="/products/viewDetails/${product.id}"><img alt="" src="/img/product1a.jpg"></a>
 
                                 <div class="shortlinks">
                                     <a class="details" href="/products/viewDetails/${product.id}">DETAILS</a>
-                                    <%--<a class="wishlist" href="#">WISHLIST</a>
-                                    <a class="compare" href="#">COMPARE</a>--%>
                                 </div>
                                 <div class="pricetag">
                                     <span class="spiral"></span><a methods="" href="/cart/add/" class="productcart">ADD TO CART</a>
@@ -173,12 +171,10 @@
                                     <a class="prdocutname" href="/products/viewDetails/${product.id}">${product.name}</a>
 
                                     <div class="thumbnail">
-                                        <a href="#"><img alt="" src="/img/product1a.jpg"></a>
+                                        <a href="/products/viewDetails/${product.id}"><img alt="" src="/img/product1a.jpg"></a>
 
                                         <div class="shortlinks">
                                             <a class="details" href="/products/viewDetails/${product.id}">DETAILS</a>
-                                                <%--<a class="wishlist" href="#">WISHLIST</a>
-                                                <a class="compare" href="#">COMPARE</a>--%>
                                         </div>
                                         <div class="pricetag">
                                             <span class="spiral"></span><a href="/cart/add/" class="productcart">ADD TO CART</a>

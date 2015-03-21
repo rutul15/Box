@@ -6,7 +6,7 @@
 <%@ page session="true" %>
 
 
-<%@ include file="template/header.html" %>
+<%@ include file="template/noMenuHeader.html" %>
 <!-- Account Login-->
 <div class="row">
     <div class="span12">
