@@ -38,7 +38,6 @@ public class Cart {
     }
 
 
-
     public Timestamp getTimestamp() {
         return timestamp;
     }

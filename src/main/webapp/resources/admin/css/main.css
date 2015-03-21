@@ -412,7 +412,7 @@ ul.sub li ul li { padding-left: 10px; }
 .cleditorMain, table tfoot td, .totalAmount, table tr:last-child
 { -webkit-border-bottom-left-radius: 3px; -webkit-border-bottom-right-radius: 3px; -moz-border-radius-bottomleft: 3px; -moz-border-radius-bottomright: 3px; }
 
-.partners li:hover, .newUpdate:hover, .wUserInfo:hover { background: #fdfdfd; }
+.warehouses li:hover, .newUpdate:hover, .wUserInfo:hover { background: #fdfdfd; }
 
 
 
@@ -833,11 +833,11 @@ html ul.tabs li.activeTab a { color: #2E6B9B; }
 
 /* Partners list widget */
 
-.partners {  }
-.partners img { margin-right: 12px; }
-.partners li { border-top: 1px solid #cdcdcd; padding: 12px 12px 8px 12px; }
+.warehouses {  }
+.warehouses img { margin-right: 12px; }
+.warehouses li { border-top: 1px solid #cdcdcd; padding: 12px 12px 8px 12px; }
 
-.partners li:first-child { border-top: none; }
+.warehouses li:first-child { border-top: none; }
 .pInfo { float: left; }
 .pLinks { float: right; width: 12px; margin-left: 5px; }
 .pInfo i { display: block; }

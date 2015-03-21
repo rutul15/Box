@@ -9,20 +9,16 @@ import javax.persistence.*;
 @Table(name = "product_stock", schema = "", catalog = "box")
 public class ProductStock {
 
+    @OneToOne
+    Warehouse warehouse;
+    @Column(name = "product_id")
+    Long productId;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "stock")
     private int stock;
-
-    @OneToOne
-    Warehouse warehouse;
-
-    @Column(name = "product_id")
-    Long productId;
-
 
     public Long getId() {
         return id;

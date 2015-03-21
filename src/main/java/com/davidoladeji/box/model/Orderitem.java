@@ -5,9 +5,8 @@ import javax.persistence.*;
 /**
  * Created by Daveola on 2/16/2015.
  */
-@Entity (name = "orderItem")
-@IdClass(OrderitemPK.class)
-@Table (name = "orderitem")
+@Entity(name = "orderItem")
+@Table(name = "orderitem")
 public class Orderitem {
 
     @Id
@@ -16,7 +15,7 @@ public class Orderitem {
 
     @Basic
     @Column(name = "order_id")
-    private Long orderId;
+    private Long order_id;
 
     @Basic
     @Column(name = "price")
@@ -26,11 +25,11 @@ public class Orderitem {
     @Column(name = "transfer_id")
     private int transferId;
 
-    @Id
+
     @Column(name = "quantity")
     private int quantity;
 
-    @Id
+
     @Column(name = "product_id")
     private Long productId;
 
@@ -39,7 +38,7 @@ public class Orderitem {
     }
 
     public Orderitem(Long orderId, Double price, int quantity, Long productId) {
-        this.orderId = orderId;
+        this.order_id = orderId;
         this.price = price;
         this.transferId = transferId;
         this.quantity = quantity;
@@ -59,12 +58,12 @@ public class Orderitem {
     }
 
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setOrder_id(Long orderId) {
+        this.order_id = orderId;
     }
 
 
@@ -102,7 +101,6 @@ public class Orderitem {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
-
 
 
 }

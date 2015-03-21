@@ -21,39 +21,39 @@ public class Account {
     @Basic
     @Column(name = "staffid")
     private Long staffid;
-    
+
     @Column(name = "role_id")
     private int roleId;
 
-    
+
     @Column(name = "firstname")
     private String firstname;
 
-    
+
     @Column(name = "surname")
     private String surname;
 
-    
+
     @Column(name = "username")
     private String username;
 
-    
+
     @Column(name = "email")
     private String email;
 
-    
+
     @Column(name = "password")
     private String password;
 
-    
+
     @Column(name = "gender")
     private int gender;
 
-    
+
     @Column(name = "dob")
     private Date dob;
 
-    
+
     @Column(name = "mobile")
     private String mobile;
 
@@ -74,8 +74,7 @@ public class Account {
     private String country;
 
 
-
-    @Column (name = "enabled")
+    @Column(name = "enabled")
     private boolean enabled;
 
 
@@ -89,7 +88,6 @@ public class Account {
     public void setId(Long id) {
         this.id = id;
     }
-
 
 
     public Long getStaffid() {

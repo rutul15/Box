@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="template/header.html" %>
 <body>
 
@@ -30,94 +31,27 @@
             <p><strong>INFORMATION: </strong>Pending Transfers and orders to be processed</p>
         </div>
 
-        <!-- Products List table -->
-        <div class="widget">
-            <div class="title"><span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck"/></span>
-                <h6>Media table</h6></div>
-            <table cellpadding="0" cellspacing="0" width="100%" class="sTable withCheck mTable" id="checkAll">
-                <thead>
-                <tr>
-                    <td><img src="img/icons/tableArrows.png" alt=""/></td>
-                    <td>Image</td>
-                    <td class="sortCol">
-                        <div>Description<span></span></div>
-                    </td>
-                    <td class="sortCol">
-                        <div>Date<span></span></div>
-                    </td>
-                    <td>File info</td>
-                    <td>Actions</td>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <td colspan="6">
-                        <div class="itemActions">
-                            <label>Apply action:</label>
-                            <select>
-                                <option value="">Select action...</option>
-                                <option value="Edit">Edit</option>
-                                <option value="Delete">Delete</option>
-                                <option value="Move">Move somewhere</option>
-                            </select>
-                        </div>
-                        <div class="tPagination">
-                            <ul>
-                                <li class="prev"><a href="#" title=""></a></li>
-                                <li><a href="#" title="">1</a></li>
-                                <li><a href="#" title="">2</a></li>
-                                <li><a href="#" title="">3</a></li>
-                                <li><a href="#" title="">4</a></li>
-                                <li><a href="#" title="">5</a></li>
-                                <li><a href="#" title="">6</a></li>
-                                <li>...</li>
-                                <li><a href="#" title="">20</a></li>
-                                <li class="next"><a href="#" title=""></a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                </tfoot>
-                <tbody>
-                <tr>
-                    <td><input type="checkbox" id="titleCheck2" name="checkRow"/></td>
-                    <td align="center"><a href="img/big.png" title="" rel="lightbox"><img src="img/user.png"
-                                                                                             alt=""/></a></td>
-                    <td><a href="#" title="">Image1 description</a></td>
-                    <td align="center">Feb 12, 2012. 12:28</td>
-                    <td class="fileInfo">
-                        <span><strong>Size:</strong> 215 Kb</span><span><strong>Format:</strong> .jpg</span></td>
-                    <td class="actBtns"><a href="#" title="Update" class="tipS"><img src="img/icons/edit.png"
-                                                                                     alt=""/></a><a href="#"
-                                                                                                    title="Remove"
-                                                                                                    class="tipS"><img
-                            src="img/icons/remove.png" alt=""/></a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
         <!-- Widgets -->
         <div class="widgets">
             <div class="oneTwo">
                 <!-- Warehouses list widget -->
                 <div class="widget">
-                    <div class="title"><img src="img/icons/dark/users.png" alt="" class="titleIcon"/><h6>Partners
-                        list</h6></div>
-                    <ul class="partners">
+                    <div class="title"><img src="img/icons/dark/users.png" alt="" class="titleIcon"/><h6>Warehouses</h6></div>
+                    <ul class="warehouses">
+                        <c:forEach  items="${warehouses.subList(0,5)}" var="warehouse">
                         <li>
-                            <a href="#" title="" class="floatL"><img src="img/user.png" alt=""/></a>
+                            <a href="#" title="" class="floatL"><img src="img/icons/color/store.png" alt=""/></a>
 
                             <div class="pInfo">
-                                <a href="#" title=""><strong>Dave Armstrong</strong></a>
-                                <i>Creative director at Google Inc. Zurich</i>
+                                <a href="#" title=""><strong>${warehouse.location.name}</strong></a>
+                                <i>${warehouse.codename}</i>
                             </div>
                             <div class="pLinks">
-                                <a href="#" title="Direct call" class="tipW"><img src="img/icons/pSkype.png" alt=""/></a>
-                                <a href="#" title="Send an email" class="tipW"><img src="img/icons/pEmail.png"
-                                                                                    alt=""/></a>
+
                             </div>
                             <div class="clear"></div>
                         </li>
+                        </c:forEach>
                     </ul>
                 </div>
 
@@ -264,14 +198,14 @@
 
         <!-- Dynamic table -->
         <div class="widget">
-            <div class="title"><img src="img/icons/dark/full2.png" alt="" class="titleIcon"/><h6>Dynamic table</h6>
+            <div class="title"><img src="img/icons/dark/full2.png" alt="" class="titleIcon"/><h6>All Orders</h6>
             </div>
             <table cellpadding="0" cellspacing="0" border="0" class="display dTable">
                 <thead>
                 <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>No. Items</th>
                     <th>Engine version</th>
                 </tr>
                 </thead>

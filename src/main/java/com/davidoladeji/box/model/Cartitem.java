@@ -33,7 +33,6 @@ public class Cartitem {
     private int productsId;
 
 
-
     public Long getId() {
         return id;
     }

@@ -8,7 +8,7 @@
 <%@ include file="template/header.html" %>
 <div class="row">
     <!-- Register Account-->
-    <div class="span9">
+    <div class="span10 pull-right">
         <h1 class="heading1"><span class="maintext">Register Account</span><span class="subtext">Register Your details with us</span>
         </h1>
 
@@ -149,42 +149,6 @@
         <div class="clearfix"></div>
         <br>
     </div>
-    <!-- Sidebar Start-->
-    <aside class="span3">
-        <div class="sidewidt">
-            <h2 class="heading2"><span>Account</span></h2>
-            <ul class="nav nav-list categories">
-                <li>
-                    <a href="#"> My Account</a>
-                </li>
-                <li>
-                    <a href="#">Edit Account</a>
-                </li>
-                <li>
-                    <a href="#">Password</a>
-                </li>
-                <li>
-                    <a href="#">Wish List</a>
-                </li>
-                <li><a href="#">Order History</a>
-                </li>
-                <li><a href="#">Downloads</a>
-                </li>
-                <li><a href="#">Returns</a>
-                </li>
-                <li>
-                    <a href="#"> Transactions</a>
-                </li>
-                <li>
-                    <a href="category.html">Newsletter</a>
-                </li>
-                <li>
-                    <a href="category.html">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </aside>
-    <!-- Sidebar End-->
 </div>
 </div>
 </section>

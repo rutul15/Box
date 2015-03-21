@@ -2,6 +2,7 @@ package com.davidoladeji.box.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Daveola on 2/16/2015.
@@ -10,39 +11,26 @@ import java.util.Date;
 @Table(name = "orders")
 public class Orders {
 
+    @OneToMany
+    List<Orderitem> orderItems;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    
     @Column(name = "order_date")
     private Date orderDate;
-
-    
     @Column(name = "order_time")
     private Date orderTime;
-
-    
     @Column(name = "order_status")
     private int orderStatus;
-
-    
     @Column(name = "customer_id")
     private int customerId;
-
-    
     @Column(name = "price")
     private Double price;
-
-    
     @Column(name = "choice_warehouse")
     private String choiceWarehouse;
-
-    
     @Column(name = "payment_option")
     private String paymentOption;
-
 
     public Long getId() {
         return id;
@@ -114,39 +102,4 @@ public class Orders {
         this.paymentOption = paymentOption;
     }
 
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Orders orders = (Orders) o;
-
-        if (customerId != orders.customerId) return false;
-        if (orderStatus != orders.orderStatus) return false;
-        if (choiceWarehouse != null ? !choiceWarehouse.equals(orders.choiceWarehouse) : orders.choiceWarehouse != null)
-            return false;
-        if (id != null ? !id.equals(orders.id) : orders.id != null) return false;
-        if (orderDate != null ? !orderDate.equals(orders.orderDate) : orders.orderDate != null) return false;
-        if (orderTime != null ? !orderTime.equals(orders.orderTime) : orders.orderTime != null) return false;
-        if (paymentOption != null ? !paymentOption.equals(orders.paymentOption) : orders.paymentOption != null)
-            return false;
-        if (price != null ? !price.equals(orders.price) : orders.price != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (orderDate != null ? orderDate.hashCode() : 0);
-        result = 31 * result + (orderTime != null ? orderTime.hashCode() : 0);
-        result = 31 * result + orderStatus;
-        result = 31 * result + customerId;
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (choiceWarehouse != null ? choiceWarehouse.hashCode() : 0);
-        result = 31 * result + (paymentOption != null ? paymentOption.hashCode() : 0);
-        return result;
-    }
 }

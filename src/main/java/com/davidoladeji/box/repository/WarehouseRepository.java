@@ -1,6 +1,5 @@
 package com.davidoladeji.box.repository;
 
-import com.davidoladeji.box.model.Truck;
 import com.davidoladeji.box.model.Warehouse;
 import org.springframework.data.jpa.repository.JpaRepository;
 

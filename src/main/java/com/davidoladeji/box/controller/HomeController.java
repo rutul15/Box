@@ -57,13 +57,16 @@ public class HomeController   {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView homePage(ModelAndView model) throws ResourceNotFoundException{
+    public ModelAndView homePage(ModelAndView model){
         model.addObject("title", "Home page!");
         model.addObject("breadcrumb", "*");
 
 
         List<Product> featuredProductsList =  productRepository.findByFeatured(true);
         model.addObject("featuredProductsList", featuredProductsList);
+
+        List<Product> productsList = productRepository.findAll();
+        model.addObject("productsList", productsList);
 
 
         model.setViewName("index");
@@ -72,7 +75,7 @@ public class HomeController   {
 
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public ModelAndView loginPage(ModelAndView model) throws ResourceNotFoundException{
+    public ModelAndView loginPage(ModelAndView model){
         model.addObject("title", "Login");
         model.addObject("breadcrumb", "Login");
 
@@ -173,7 +176,7 @@ public class HomeController   {
     public ModelAndView pageNotFound(ModelAndView model) {
         model.addObject("title", "Page Not Found");
 
-            model.addObject("msg", "The page is unavailable, maybe nect time!");
+            model.addObject("msg", "The page is unavailable, maybe next time!");
 
         model.setViewName("/404");
         return model;

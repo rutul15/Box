@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,8 +83,12 @@ public class AdminController {
 
 
     @RequestMapping(value = {"/admin", "/admin/dashboard"}, method = RequestMethod.GET)
-    public ModelAndView adminDashboard(ModelAndView model) {
+    public ModelAndView adminDashboard(ModelAndView model, Principal user) {
         model.addObject("title", "Dashboard!");
+
+        model.addObject("username", user.getName());
+
+        model.addObject("warehouses", warehouseRepository.findAll());
         model.setViewName("admin/dashboard");
         return model;
     }

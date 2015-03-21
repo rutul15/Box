@@ -48,14 +48,14 @@ public class StockController {
     public ModelAndView adminAddStockPost(ModelAndView model,  @ModelAttribute("productStock") ProductStock productStock, BindingResult result, final RedirectAttributes redirectAttributes) {
         model.addObject("title", "Stocks Page");
 
-        List<Product> productStockCheck = productStockRepository.findByProductIdAndWarehouse_Id(productStock.getProductId(), productStock.getWarehouse().getId());
-        if(productStockCheck.size() >= 1){
-            redirectAttributes.getFlashAttributes();
-            model.setViewName("redirect:/admin/addStock{id}");
-        }else if(productStockCheck.size() == 0) {
+       // List<Product> productStockCheck = productStockRepository.findByProductIdAndWarehouse_Id(productStock.getProductId(), productStock.getWarehouse().getId());
+        //if(productStockCheck.size() >= 1){
+           // redirectAttributes.getFlashAttributes();
+        //    model.setViewName("redirect:/admin/addStock{id}");
+      //  }else if(productStockCheck.size() == 0) {
             productStockRepository.save(productStock);
             model.setViewName("redirect:/admin/products");
-        }
+       // }
 
         return model;
     }

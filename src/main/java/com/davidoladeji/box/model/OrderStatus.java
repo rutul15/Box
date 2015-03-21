@@ -5,7 +5,7 @@ import javax.persistence.*;
 /**
  * Created by Daveola on 2/16/2015.
  */
-@Entity (name ="orderStatus")
+@Entity(name = "orderStatus")
 @Table(name = "order_status", schema = "", catalog = "box")
 public class OrderStatus {
 

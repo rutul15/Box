@@ -1,8 +1,6 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -31,7 +29,6 @@ public class CartitemsPK implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
 
     public int getCartId() {

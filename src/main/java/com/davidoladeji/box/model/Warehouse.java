@@ -8,21 +8,17 @@ import javax.persistence.*;
 @Entity
 public class Warehouse {
 
+    @OneToOne
+    Location location;
     @Id
     @Column(name = "id")
     private Long id;
-
     @Basic
     @Column(name = "codename")
     private String codename;
-
     @Basic
     @Column(name = "enabled")
     private boolean enabled;
-
-    @OneToOne
-    Location location;
-
 
     public Long getId() {
         return id;

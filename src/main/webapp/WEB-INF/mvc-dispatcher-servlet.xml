@@ -29,6 +29,11 @@
     <mvc:resources mapping="admin/403/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/403/img/**" location="resources/admin/img/"/>
 
+
+    <mvc:resources mapping="admin/transfers/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/transfers/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/transfers/img/**" location="resources/admin/img/"/>
+
     <mvc:resources mapping="admin/editProduct/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/editProduct/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/editProduct/img/**" location="resources/admin/img/"/>
@@ -36,6 +41,10 @@
     <mvc:resources mapping="admin/addStock/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/addStock/js/**" location="resources/admin/js/"/>
     <mvc:resources mapping="admin/addStock/img/**" location="resources/admin/img/"/>
+
+    <mvc:resources mapping="admin/addProduct/css/**" location="resources/admin/css/"/>
+    <mvc:resources mapping="admin/addProduct/js/**" location="resources/admin/js/"/>
+    <mvc:resources mapping="admin/addProduct/img/**" location="resources/admin/img/"/>
 
     <mvc:resources mapping="admin/css/**" location="resources/admin/css/"/>
     <mvc:resources mapping="admin/js/**" location="resources/admin/js/"/>

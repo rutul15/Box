@@ -1,6 +1,9 @@
 package com.davidoladeji.box.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by Daveola on 2/16/2015.
