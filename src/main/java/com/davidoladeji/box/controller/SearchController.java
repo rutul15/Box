@@ -29,24 +29,20 @@ public class SearchController {
 
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
-    public @ResponseBody ModelAndView searchProducts( @ModelAttribute("productsearch") Search search, BindingResult result, @RequestParam("searchterm") String searchterm) {
-
-        ModelAndView model = new ModelAndView("search");
-        model.addObject("search", search);
-
+    public ModelAndView searchProducts(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result, @RequestParam("searchterm") String searchterm) {
+        model.addObject("title", "Search page!");
+        model.addObject("breadcrumb", "Search Result ");
 
         List<Product> searchProductsList = productRepository.findByName(searchterm);
 
-        model.addObject("searchProductsList", searchProductsList);
-
         model.setViewName("searchresult");
-        return model;
+        return new ModelAndView("searchresult", "searchProductsList", searchProductsList);
     }
 
 
 
     @RequestMapping(value = "searchresult", method = RequestMethod.GET)
-    public @ResponseBody ModelAndView searchResult(ModelAndView model) {
+    public @ResponseBody ModelAndView searchResult(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result) {
 
 
 

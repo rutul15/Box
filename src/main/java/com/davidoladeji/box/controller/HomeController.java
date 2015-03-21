@@ -3,6 +3,7 @@ package com.davidoladeji.box.controller;
 
 import com.davidoladeji.box.model.Account;
 import com.davidoladeji.box.model.Product;
+import com.davidoladeji.box.model.Search;
 import com.davidoladeji.box.repository.*;
 import com.davidoladeji.box.util.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,11 +58,11 @@ public class HomeController   {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView homePage(ModelAndView model){
+    public ModelAndView homePage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result){
         model.addObject("title", "Home page!");
         model.addObject("breadcrumb", "*");
 
-
+        model.addObject("productsearch", search);
         List<Product> featuredProductsList =  productRepository.findByFeatured(true);
         model.addObject("featuredProductsList", featuredProductsList);
 
@@ -75,7 +76,7 @@ public class HomeController   {
 
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public ModelAndView loginPage(ModelAndView model){
+    public ModelAndView loginPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result){
         model.addObject("title", "Login");
         model.addObject("breadcrumb", "Login");
 
@@ -84,7 +85,7 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.GET)
-    public ModelAndView logoutPage(ModelAndView model) {
+    public ModelAndView logoutPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult result) {
         model.addObject("title", "Logout");
         model.addObject("breadcrumb", "Logged out");
 
@@ -93,7 +94,7 @@ public class HomeController   {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.GET)
-      public ModelAndView registerPage(ModelAndView model, @ModelAttribute("account")Account account) {
+      public ModelAndView registerPage(ModelAndView model, @ModelAttribute("account")Account account, @ModelAttribute("productsearch") Search search, BindingResult result) {
         model.addObject("title", "Register");
         model.addObject("breadcrumb", "Register");
 

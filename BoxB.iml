@@ -116,5 +116,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.0.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="javax.servlet" level="project" />
   </component>
 </module>

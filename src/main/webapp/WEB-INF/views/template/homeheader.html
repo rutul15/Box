@@ -48,9 +48,9 @@
                     </div>
                     <!-- Top Nav End -->
                     <div class="pull-right">
-                        <form class="form-search top-search">
-                            <input type="text" class="input-medium search-query">
-                        </form>
+                        <form:form  action="/search" commandName="productsearch" method="get" class="form-search top-search">
+                            <form:input  path="searchterm" type="text" class="input-medium"></form:input>
+                        </form:form>
                     </div>
                 </div>
             </div>

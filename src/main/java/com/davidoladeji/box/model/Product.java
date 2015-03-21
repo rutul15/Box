@@ -1,6 +1,7 @@
 package com.davidoladeji.box.model;
 
 import com.davidoladeji.box.repository.ProductStockRepository;
+import com.davidoladeji.box.util.ProductManger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -34,6 +35,9 @@ public class Product {
     private boolean enabled;
     @Column(name = "featured")
     private boolean featured;
+
+    @Column(name="totalstock", nullable = true)
+    private int totalstock;
 
     @OneToMany
     List<ProductStock> productStock;
@@ -125,11 +129,33 @@ public class Product {
     }
 
 
+    public int getTotalstock() {
+        ProductManger productManger = new ProductManger();
+        totalstock = productManger.getProductTotalStock(this);
+        return totalstock;
+    }
+
+    public void setTotalstock(int totalstock) {
+        this.totalstock = totalstock;
+    }
+
     public List<ProductStock> getProductStock() {
         return productStock;
     }
 
     public void setProductStock(List<ProductStock> productStock) {
         this.productStock = productStock;
+    }
+
+
+
+    @PostLoad
+    public void doPostLoad(){
+        this.setTotalstock(this.getTotalstock());
+    }
+
+    @PrePersist
+    public void doPrePersist(){
+        this.setTotalstock(this.getTotalstock());
     }
 }

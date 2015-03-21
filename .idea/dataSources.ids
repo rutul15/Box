@@ -119,10 +119,9 @@
       <column name="regular_price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="sales_price" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
       <column name="itemsperbox" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="imageurl" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <column name="featured" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
-      <column name="stock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="totalstock" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="fk_CartItems_Products1" table="cartitem" schema="" catalog="box" columns="Products_id"/>
       <exported-key name="orderitem_ibfk_1" table="orderitem" schema="" catalog="box" columns="product_id"/>
