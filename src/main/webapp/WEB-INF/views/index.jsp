@@ -38,7 +38,7 @@
                     <c:forEach items="${featuredProductsList}" varStatus="loopStatus" var="product">
                     <div class="item">
                         <div>
-                            <a href="#"><img src="/img/product-one.jpg" alt="" title=""/></a>
+                            <a href="/products/viewDetails/${product.id}"><img src="/img/product-one.jpg" alt="" title=""/></a>
 
                             <div class="text">
                                 <h1 class="productname"><span

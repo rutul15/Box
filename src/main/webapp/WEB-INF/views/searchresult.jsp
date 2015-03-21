@@ -167,35 +167,41 @@
                       </c:forEach>
                   </ul>
                   <ul class="thumbnails list row">
+
+                      <c:if test="${searchProductsList.size() == 0}">
+                          <h1 class="warning"> No Result(Product) for that search </h1>
+                      </c:if>
+                      <c:forEach items="${searchProductsList}" var="product">
                     <li>
                       <div class="thumbnail">
                         <div class="row">
                           <div class="span3">
-                            <span class="offer tooltip-test" >Offer</span>
+                              <c:if test="${product.regularPrice - product.salesPrice > 50}">
+                                  <span class="sale tooltip-test">Sale</span>
+                              </c:if>
+                              <c:if test="${product.regularPrice - product.salesPrice > 100}">
+                                  <span class="offer tooltip-test">Offer</span>
+                              </c:if>
                             <a href="#"><img alt="" src="img/product1.jpg"></a>
                           </div>
                           <div class="span6">
-                            <a class="prdocutname" href="product.html">Product Name Here</a>
-                            <div class="productdiscrption"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.<br>
-                              <br>
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan </div>
+                            <a class="prdocutname" href="product.html">${product.name}</a>
+                            <div class="productdiscrption"> ${product.description} </div>
                             <div class="pricetag">
                               <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
                               <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
+                                <div class="pricenew">&pound; ${product.salesPrice}</div>
+                                <div class="priceold">&pound; ${product.regularPrice}</div>
                               </div>
                             </div>
                             <div class="shortlinks">
-                              <a class="details" href="#">DETAILS</a>
-                              <a class="wishlist" href="#">WISHLIST</a>
-                              <a class="compare" href="#">COMPARE</a>
+                              <a class="details" href="/products/viewDetails/${product.id}">DETAILS</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </li>
+                      </c:forEach>
                   </ul>
                   <div class="pagination pull-right">
                     <ul>
