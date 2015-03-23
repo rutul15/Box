@@ -4,7 +4,9 @@ package com.davidoladeji.box.controller;
 import com.davidoladeji.box.model.Account;
 import com.davidoladeji.box.model.Product;
 import com.davidoladeji.box.model.Search;
+import com.davidoladeji.box.model.Warehouse;
 import com.davidoladeji.box.repository.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Contains frontend navigation control methods to pages on the frontend of the application
@@ -75,10 +79,12 @@ public class HomeController {
 
 
     @RequestMapping(value = {"", "login"}, method = RequestMethod.GET)
-    public ModelAndView loginPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
+    public ModelAndView loginPage(ModelAndView model, @ModelAttribute("productsearch") Search search, 
+    		BindingResult bindingResult, HttpSession session) {
         model.addObject("title", "Login");
         model.addObject("breadcrumb", "Login");
-
+        System.out.println("login");
+        session.removeAttribute("cart");
 
         model.setViewName("login");
         return model;
@@ -153,7 +159,10 @@ public class HomeController {
     public ModelAndView cartPage(ModelAndView model, @ModelAttribute("productsearch") Search search, BindingResult bindingResult) {
         model.addObject("title", "Cart");
         model.addObject("breadcrumb", "Cart");
-
+        
+        // get the warehouse and put in in model.
+        List<Warehouse> list = warehouseRepository.findAll();
+        model.addObject("warehousesList", list);
         model.setViewName("cart");
         return model;
     }

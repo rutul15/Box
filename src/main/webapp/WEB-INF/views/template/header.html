@@ -60,10 +60,13 @@
     </div>
     <div class="container">
         <div class="headerdetails">
+        
+        
             <security:authorize access="hasRole('ROLE_ADMIN') OR hasRole('ROLE_USER') OR hasRole('ROLE_EMPLOYEE') OR hasRole('ROLE_DRIVER')">
             <div class="pull-right">
                 <ul class="nav topcart pull-left">
                     <li class="dropdown hover carticon ">
+                    
                         <a href="#" class="dropdown-toggle"> Shopping Cart <span class="label label-orange font14">1 item(s)</span>
                             - $589.50 <b class="caret"></b></a>
                         <ul class="dropdown-menu topcartopen ">

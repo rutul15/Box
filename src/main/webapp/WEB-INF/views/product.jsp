@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ page session="true" %>
 
-<%@ include file="template/specialHeader.html" %>
+<%@ include file="template/specialHeader.jsp" %>
 
 <div id="maincontainer">
     <section id="product">
@@ -84,22 +84,29 @@
                                     <li class="off"></li>
                                 </ul>
                             </div>
+                            <c:url var="cart" value="/cart/add/"></c:url>
+                            <form action="${cart}" method="post">
                             <div class="quantitybox">
 
                                 <div class="clear"></div>
                                 <div class="control-group">
-                                    <div class="controls"><%--
-                                        <form:label path="quanity"></form:label>
-                                        <form:input path="quanity" name="quamtity"/>--%>
-
+                                    <div class="controls">
+                                        <label>Quantity</label>
+                                        <input type="text" id="quantity" name="quantity" value="1"/>
+                                        <input type="hidden" value="${product.id }" id="productId" name="productId"/>
 
                                     </div>
                                 </div>
                             </div>
                             <ul class="productpagecart">
-                                <li><a class="cart" href="/cart/add/">Add to Cart</a>
+                            	
+                            	
+                                <li>
+                                <input type="submit" class="cart btn btn-primary" name="submit" value="Add to Cart">
+                                
                                 </li>
                             </ul>
+                            </form>
                             <!-- Product Description tab & comments-->
                             <div class="productdesc">
                                 <ul class="nav nav-tabs" id="myTab">
@@ -176,5 +183,50 @@
 </div>
 
 <%@ include file="template/footer.html" %>
+<div id="msg">Item added successfully !!</div>
+
+<script>
+    function cap(para1, para2){
+        
+    	
+    	/* $.ajax({
+            url: '${pageContext.request.contextPath}/cart/add/',
+            type: 'POST',
+            contentType: 'application/x-www-form-urlencoded',
+            data: {'quantity' : para1, 'productId' : para2},
+            dataType: 'json',
+            success: function (content) {
+            	
+            	console.log("Data: "+ content);
+                $("#currentcart").html("test1111");
+                $.fancybox({
+                    href: '#msg',
+                    showCloseButton: false,
+                    enableEscapeButton: false,
+                    hideOnOverlayClick: false
+                });
+            },
+            error: function (xht, status, ex) {
+                console.log("error : " + ex);//JSON.parse: bad escaped character
+            }
+        }); */
+    	
+    }
+
+    $(function(){
+        $('.addcart').click(function(){
+            var $this = $(this);
+            var p1 = $('#quantity').val();
+            var p2 = $('#productId').val();
+            cap(p1, p2);
+        });
+    });
+    
+    
+    
+    
+
+</script>
+
 </body>
 </html>

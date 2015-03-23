@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ page session="true" %>
 
-<%@ include file="template/specialHeader.html" %>
+<%@ include file="template/specialHeader.jsp" %>
 <!-- Header End -->
 
 <div id="maincontainer">
@@ -15,6 +15,9 @@
             </h1>
             <!-- Cart-->
             <div class="cart-info">
+            <c:url var="updateUrl" value="/cart/update">  </c:url>
+            	<form method="post" action="${updateUrl }" id="updateForm">
+            	
                 <table class="table table-striped table-bordered">
                     <tr>
                         <th class="image">Image</th>
@@ -26,25 +29,33 @@
                         <th class="total">Total</th>
 
                     </tr>
+                    <% if (cartBean != null){ %>
+                     <% for (Orderitem item : cartBean.getOrderItems()){ %>
+                     
+                     
                     <tr>
                         <td class="image"><a href="#"><img title="product" alt="product" src="img/product-40x40.png"
                                                            height="50" width="50"></a></td>
-                        <td class="name"><a href="#">Jeans</a></td>
-                        <td class="model">Purchased Product</td>
-                        <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1">
+                        <td class="name"><a href="#"><%= item.getProduct().getName() %></a></td>
+                        <td class="model"><%= item.getProduct().getDescription() %></td>
+                        <td class="quantity"><input type="text" size="1" value="<%= item.getQuantity() %>" id="quantity<%= item.getProductId() %>" class="span1">
 
                         </td>
-                        <td class="total"><a href="#"><img class="tooltip-test" data-original-title="Update"
+                        
+                        <td class="total"><a href="javascript: submitForm('update', <%= item.getProductId() %>);"><img class="tooltip-test" data-original-title="Update"
                                                            src="img/update.png" alt=""></a>
-                            <a href="#"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
+                            <a href="javascript: submitForm('remove', <%= item.getProductId() %>);"><img class="tooltip-test" data-original-title="Remove" src="img/remove.png"
                                              alt=""></a></td>
 
 
-                        <td class="price">$120.68</td>
-                        <td class="total">$120.68</td>
+                        <td class="price">$<%= item.getPrice() %></td>
+                        <td class="total">$<%= item.getTotalItemPrice() %></td>
 
                     </tr>
+                    <%} 
+                    }%>
                 </table>
+              </form>  
             </div>
             <div class="cartoptionbox">
 
@@ -74,17 +85,30 @@
 
                             <tr>
                                 <td><span class="extra bold totalamout">Total :</span></td>
-                                <td><span class="bold totalamout">&pound; 150.28</span></td>
+                                <td><span class="bold totalamout">$ <%= cartBean.getTotal() %></span></td>
                             </tr>
                         </table>
-                        <input type="submit" value="CheckOut" class="btn btn-orange pull-right">
-                        <input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10">
+                        <a href="/checkout" class="btn btn-orange pull-right" >Check Out</a>
+                        
+                        <a href="/index" class="btn btn-orange pull-right mr10">Continue Shopping</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+<script>
+function submitForm(action, productId){
+	
+	var quantity = $('#quantity'+productId).val();
+	 $('#updateForm').append('<input type="hidden" name="action" value="'+action+'" />');
+	  $('#updateForm').append('<input type="hidden" name="productId" value="'+productId+'" />');
+	  $('#updateForm').append('<input type="hidden" name="quantity" value="'+quantity+'" />');
+	
+    $('#updateForm').submit();
+}
+</script>
 
 <%@ include file="template/footer.html" %>
 </body>

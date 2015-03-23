@@ -1,6 +1,8 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +24,8 @@ public class Orders {
     @Column(name = "id")
     private Long id;
     @Column(name = "order_date")
-    private Date orderDate;
-    @Column(name = "order_time")
-    private Date orderTime;
+    private Timestamp orderDate;
+    
     @Column(name = "order_status_id")
     private int orderStatus;
     @Column(name = "price")
@@ -39,22 +40,16 @@ public class Orders {
     }
 
 
-    public Date getOrderDate() {
+    public Timestamp getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(Timestamp orderDate) {
         this.orderDate = orderDate;
     }
 
 
-    public Date getOrderTime() {
-        return orderTime;
-    }
-
-    public void setOrderTime(Date orderTime) {
-        this.orderTime = orderTime;
-    }
+   
 
     public int getOrderStatus() {
         return orderStatus;

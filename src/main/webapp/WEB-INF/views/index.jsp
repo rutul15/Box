@@ -5,8 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ page session="true" %>
 
-<%@ include file="template/homeheader.html" %>
-<script type="application/javascript" scr="jquery-1.11.2.min.js">
+<%@ include file="template/specialHeader.jsp" %>
+<script type="application/javascript" src="jquery-1.11.2.min.js">
     $("#ajaxform").submit(function (e) {
         $.ajax({
             url: '/cart/add/{',
@@ -27,6 +27,7 @@
                 console.log("error : " + ex);//JSON.parse: bad escaped character
             }
         });
+   });
 </script>
 <!-- Header End -->
 <div id="maincontainer">

@@ -1,6 +1,7 @@
 package com.davidoladeji.box.model;
 
 import javax.persistence.*;
+
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class Orderitem {
     @OneToOne
     private Product product;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
     @Basic
@@ -22,9 +24,7 @@ public class Orderitem {
     @Basic
     @Column(name = "price")
     private Double price;
-    @Basic
-    @Column(name = "transfer_id", insertable = false, updatable = false)
-    private int transferId;
+ 
     @Column(name = "quantity")
     private int quantity;
     @Column(name = "product_id", insertable = false, updatable = false)
@@ -32,8 +32,11 @@ public class Orderitem {
 
     @OneToOne
     private Transfer transfer;
+    
     @OneToMany
-    List<Orders> order;
+    List<Orders> orders;
+    
+  
 
     public Orderitem() {
     }
@@ -41,7 +44,7 @@ public class Orderitem {
     public Orderitem(Long orderId, Double price, int quantity, Long productId) {
         this.order_id = orderId;
         this.price = price;
-        this.transferId = transferId;
+        
         this.quantity = quantity;
         this.productId = productId;
     }
@@ -77,13 +80,6 @@ public class Orderitem {
     }
 
 
-    public int getTransferId() {
-        return transferId;
-    }
-
-    public void setTransferId(int transferId) {
-        this.transferId = transferId;
-    }
 
 
     public int getQuantity() {
@@ -118,5 +114,9 @@ public class Orderitem {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+    
+    public double getTotalItemPrice(){
+    	return this.getQuantity() * this.getPrice();
     }
 }
